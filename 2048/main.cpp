@@ -5,16 +5,8 @@
 
 int data[4][4] = {0};
 
-void show(int data[4][4]);
-void init(int data[4][4], int initNum);
-void compact(int data[4][4]);
-void mergeleft(int data[4][4]);
 void rotate(int data[4][4], int count);
-void newnum(int data[4][4], int initNum);
-void mergeup(int data[4][4]);
-void mergeright(int data[4][4]);
-void mergedown(int data[4][4]);	
-
+	
 void init(int data[4][4], int initNum) {	//初始數字 
 	int random[4];
 	for(int i = 0; i < 4; i++) {
@@ -30,7 +22,7 @@ void init(int data[4][4], int initNum) {	//初始數字
 	}
 }
 
-void newnum(int data[4][4], int initNum) {
+void newnum(int data[4][4], int initNum) {	//生成新數字 
 	int random[2];
 	for(int i = 0; i < 4; i++) {
 		srand((unsigned)time(NULL) + rand() + i);
@@ -59,7 +51,7 @@ void compact(int data[4][4]) {		//向左緊湊
 		}
 }
 	
-void mergeleft(int data[4][4]) {
+void mergeleft(int data[4][4]) {	//向左合併 
 	compact(data);
 	
 	for(int i = 0; i < 4; i++) {
@@ -73,25 +65,25 @@ void mergeleft(int data[4][4]) {
 	}
 }
 
-void mergeup(int data[4][4]) {
+void mergeup(int data[4][4]) {	//向上合併 
 	rotate(data, 3);
 	mergeleft(data);
 	rotate(data, 1);
 }
 
-void mergeright(int data[4][4]) {
+void mergeright(int data[4][4]) {	`//向右合併 
 	rotate(data, 2);
 	mergeleft(data);
 	rotate(data, 2);
 }
 
-void mergedown(int data[4][4]) {
+void mergedown(int data[4][4]) {	//向下合併 
 	rotate(data, 1);
 	mergeleft(data);
 	rotate(data, 3);
 }
 
-void copydata(int data[4][4], int scr[4][4]) {
+void copydata(int data[4][4], int scr[4][4]) {	//複製矩陣 
 	for(int i = 0; i < 4; i++) {
 		for(int j = 0; j < 4; j++) {
 			data[i][j] = scr[i][j];
